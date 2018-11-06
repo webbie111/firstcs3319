@@ -23,16 +23,16 @@ INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES
 INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES ("Barney","Rubble","Bedrock","777-1234",10);
 INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES ("Peter","Griffens","Providence","987-4567",14);
 
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (21,20,99);
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (21,14,12);
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (21,10,66);
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (31,1,99);
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (31,2,12);
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (31,4,78);
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (31,2,66);
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (15,2,66);
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (15,2,78);
-INSERT INTO bought (boughtCustomerID, quantBought, boughtProductID) VALUES (14,19,66);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (1,21,20,99);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (2,21,14,12);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (3,21,10,66);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (4,31,1,99);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (5,31,2,12);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (6,31,4,78);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (7,31,2,66);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (8,15,2,66);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (9,15,2,78);
+INSERT INTO bought (boughtID, boughtCustomerID, quantBought, boughtProductID) VALUES (10,14,19,66);
 
 UPDATE customer SET customerAgentID=99 WHERE customerID=21;
 UPDATE customer SET customerAgentID=99 WHERE customerID=12;
