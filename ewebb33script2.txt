@@ -1,0 +1,57 @@
+--add data
+LOAD DATA INFILE 'loaddatafall2018.txt' INTO TABLE ewebb33assign2db.product;
+SELECT * FROM product;
+
+INSERT INTO product (description, cost, numberAvailable, productID) VALUES ("Elbow pads",14.25,120,66);
+INSERT INTO product (description, cost, numberAvailable, productID) VALUES ("eggs",2,500,3);
+
+INSERT INTO agent (firstName, lastName, cityWorkingOut, commissionPercentage, agentID) VALUES ("Hugh","Grant","Springfield",16,99);
+INSERT INTO agent (firstName, lastName, cityWorkingOut, commissionPercentage, agentID) VALUES ("Courtney","Cox","New York",25,22);
+INSERT INTO agent (firstName, lastName, cityWorkingOut, commissionPercentage, agentID) VALUES ("Rosie","ODonnell","Ottawa",100,66);
+INSERT INTO agent (firstName, lastName, cityWorkingOut, commissionPercentage, agentID) VALUES ("David","Letterman","Bedrock",100,33);
+INSERT INTO agent (firstName, lastName, cityWorkingOut, commissionPercentage, agentID) VALUES ("Regis","Philbin","Boston",33,11);
+INSERT INTO agent (firstName, lastName, cityWorkingOut, commissionPercentage, agentID) VALUES ("Rosie","Cox","Ottawa",50,12);
+INSERT INTO agent (firstName, lastName, cityWorkingOut, commissionPercentage, agentID) VALUES ("Edward","Webb","Bristol",99,13);
+
+INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES ("Homer","Simpson","Springfield","686-8956",21);
+INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES ("Sideshow","Bob","Springfield","686-5555",31);
+INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES ("Monty","Burns","Springfield","789-0000",12);
+INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES ("Fred","Flintstone","Bedrock","777-2345",15);
+INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES ("Super","Man","Kypto","888-1234",13);
+INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES ("Barney","Rubble","Bedrock","777-1234",10);
+INSERT INTO customer (firstName, lastName, city, phoneNumber, customerID) VALUES ("Peter","Griffens","Providence","987-4567",14);
+
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (21,"Homer","Simpson",20,99);
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (21,"Homer","Simpson",14,12);
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (21,"Homer","Simpson",10,66);
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (31,"Sideshow","Bob",1,99);
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (31,"Sideshow","Bob",2,12);
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (31,"Sideshow","Bob",4,78);
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (31,"Sideshow","Bob",2,66);
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (15,"Fred","Flintstone",2,66);
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (15,"Fred","Flintstone",2,78);
+INSERT INTO bought (boughtCustomerID, boughtFirstName, boughtLastName, quantBought, boughtProductID) VALUES (14,"Peter","Griffens",19,66);
+
+UPDATE customer SET customerAgentID=99 WHERE customerID=21;
+UPDATE customer SET customerAgentID=99 WHERE customerID=12;
+UPDATE customer SET customerAgentID=99 WHERE customerID=14;
+UPDATE customer SET customerAgentID=33 WHERE customerID=13;
+UPDATE customer SET customerAgentID=11 WHERE customerID=10;
+UPDATE customer SET customerAgentID=11 WHERE customerID=15;
+UPDATE customer SET customerAgentID=66 WHERE customerID=31;
+
+--display data
+SELECT * FROM customer;
+SELECT * FROM agent;
+SELECT * FROM product;
+SELECT * FROM bought;
+
+--updates
+UPDATE customer SET firstName = "Wonder", lastName = "Woman" WHERE firstName = "Super", lastName = "Man";
+UPDATE bought SET quantBought = 5 WHERE boughtFirstName = "Sideshow";
+
+--show data again
+SELECT * FROM customer;
+SELECT * FROM agent;
+SELECT * FROM product;
+SELECT * FROM bought;
