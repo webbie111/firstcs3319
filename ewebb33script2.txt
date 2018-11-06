@@ -2,7 +2,6 @@
 USE ewebb33assign2db;
 SHOW TABLES;
 LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' INTO TABLE product FIELDS TERMINATED BY "," LINES TERMINATED BY "\n";
-ewebb33assign2db.product;
 SELECT * FROM product;
 
 INSERT INTO product (productID, description, cost, numberAvailable) VALUES (66,"Elbow Pads",14.25,120);
@@ -52,6 +51,7 @@ SELECT * FROM bought;
 -- updates
 UPDATE customer SET firstName = "Wonder", lastName = "Woman" WHERE firstName = "Super" AND lastName = "Man";
 UPDATE bought INNER JOIN customer ON bought.boughtCustomerID = customer.customerID AND customer.firstName = "Sideshow" SET quantBought = 5;
+UPDATE customer INNER JOIN agent ON customer.agentCustomerID = agent.agentID AND agent.firstName = "Regis" SET city = "Boston";
 
 -- show data again
 SELECT * FROM customer;
