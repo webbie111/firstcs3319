@@ -1,0 +1,7 @@
+USE ewebb33assign2db;
+
+-- query 1
+SELECT description FROM product;
+
+-- query 2
+S
