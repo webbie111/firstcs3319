@@ -1,9 +1,11 @@
---add data
+-- add data
+USE ewebb33assign2db;
+SHOW TABLES;
 LOAD DATA INFILE 'loaddatafall2018.txt' INTO TABLE ewebb33assign2db.product;
 SELECT * FROM product;
 
-INSERT INTO product (description, cost, numberAvailable, productID) VALUES ("Elbow pads",14.25,120,66);
-INSERT INTO product (description, cost, numberAvailable, productID) VALUES ("eggs",2,500,3);
+INSERT INTO product (productID, description, cost, numberAvailable) VALUES (66,"Elbow Pads",14.25,120);
+INSERT INTO product (productID, description, cost, numberAvailable) VALUES (3,"egg",2,500);
 
 INSERT INTO agent (firstName, lastName, cityWorkingOut, commissionPercentage, agentID) VALUES ("Hugh","Grant","Springfield",16,99);
 INSERT INTO agent (firstName, lastName, cityWorkingOut, commissionPercentage, agentID) VALUES ("Courtney","Cox","New York",25,22);
@@ -40,17 +42,17 @@ UPDATE customer SET customerAgentID=11 WHERE customerID=10;
 UPDATE customer SET customerAgentID=11 WHERE customerID=15;
 UPDATE customer SET customerAgentID=66 WHERE customerID=31;
 
---display data
+-- display data
 SELECT * FROM customer;
 SELECT * FROM agent;
 SELECT * FROM product;
 SELECT * FROM bought;
 
---updates
+-- updates
 UPDATE customer SET firstName = "Wonder", lastName = "Woman" WHERE firstName = "Super", lastName = "Man";
 UPDATE bought SET quantBought = 5 WHERE boughtFirstName = "Sideshow";
 
---show data again
+-- show data again
 SELECT * FROM customer;
 SELECT * FROM agent;
 SELECT * FROM product;
