@@ -50,7 +50,7 @@ SELECT * FROM bought;
 
 -- updates
 UPDATE customer SET firstName = "Wonder", lastName = "Woman" WHERE firstName = "Super" AND lastName = "Man";
-UPDATE bought SET quantBought = 5 WHERE bought.boughtCustomerID = customer.customerID AND customer.firstName = "Sideshow";
+UPDATE bought INNER JOIN customer ON bought.boughtCustomerID = customer.customerID AND customer.firstName = "Sideshow" SET quantBought = 5;
 
 -- show data again
 SELECT * FROM customer;
