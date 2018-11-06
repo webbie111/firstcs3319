@@ -49,8 +49,8 @@ SELECT * FROM product;
 SELECT * FROM bought;
 
 -- updates
-UPDATE customer SET firstName = "Wonder", lastName = "Woman" WHERE firstName = "Super", lastName = "Man";
-UPDATE bought SET quantBought = 5 WHERE boughtFirstName = "Sideshow";
+UPDATE customer SET firstName = "Wonder", lastName = "Woman" WHERE firstName = "Super" AND lastName = "Man";
+UPDATE bought SET quantBought = 5 WHERE bought.boughtCustomerID = customer.customerID AND customer.firstName = "Sideshow";
 
 -- show data again
 SELECT * FROM customer;
