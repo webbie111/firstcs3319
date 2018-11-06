@@ -1,7 +1,8 @@
 -- add data
 USE ewebb33assign2db;
 SHOW TABLES;
-LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' INTO TABLE ewebb33assign2db.product;
+LOAD DATA LOCAL INFILE 'loaddatafall2018.txt' INTO TABLE product FIELDS TERMINATED BY "," LINES TERMINATED BY "\n";
+ewebb33assign2db.product;
 SELECT * FROM product;
 
 INSERT INTO product (productID, description, cost, numberAvailable) VALUES (66,"Elbow Pads",14.25,120);
