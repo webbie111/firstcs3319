@@ -4,4 +4,44 @@ USE ewebb33assign2db;
 SELECT description FROM product;
 
 -- query 2
-S
+SELECT DISTINCT city FROM customer;
+
+-- query 3
+SELECT * FROM agent ORDER BY cityWorkingOut;
+
+-- query 4
+SELECT firstName, lastName FROM customer WHERE city = "Springfield";
+
+-- query 5
+SELECT customer.lastName FROM customer INNER JOIN agent ON customer.customerAgentID = agent.agentID AND agent.firstName = "Regis";
+
+-- query 6
+SELECT description FROM product WHERE description LIKE '%pad%' OR '%Pad%';
+
+-- query 7
+SELECT customer.lastName, product.description, bought.quantBought FROM customer INNER JOIN bought ON customer.customerID = bought.boughtCustomerID INNER JOIN product ON bought.boughtProductID = product.productID;
+
+-- query 8
+SELECT SUM(quantBought) AS "Homer's Total Purchases" FROM (bought INNER JOIN customer ON bought.boughtCustomerID = customer.customerID AND customer.firstName = "Homer");
+
+-- query 9
+SELECT customer.firstName, customer.lastName, SUM(bought.quantBought) FROM bought INNER JOIN customer WHERE bought.boughtCustomerID = customer.customerID GROUP BY customer.firstName, customer.lastName;
+
+-- query 10
+
+-- query 11
+
+-- query 12
+SELECT customer.firstName AS "Customer First Name", customer.lastName AS "Customer Last Name", agent.firstName AS "Agent First Name", agent.lastName AS "Agent Last Name" FROM customer INNER JOIN agent WHERE customer.customerAgentID = agent.agentID AND customer.city = agent.cityWorkingOut;
+
+-- query 13
+SELECT SUM(quantBought) AS "Knee Pads Purchased" FROM bought INNER JOIN product WHERE product.description = "Knee Pads";
+
+-- query 14
+
+-- query 15
+SELECT agent.firstName, agent.lastName FROM agent INNER JOIN customer ON agent.agentID = customer.customerAgentID INNER JOIN bought ON customer.customerID = bought.boughtCustomerID INNER JOIN product ON bought.boughtProductID = product.productID AND product.description = "Knee Pads";
+
+
+
+
