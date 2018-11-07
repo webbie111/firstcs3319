@@ -1,0 +1,108 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+SELECT description FROM product
+--------------
+
+description
+egg
+Bike
+Socks
+Elbow Pads
+Knee Pads
+Roller Blades
+Helmet
+--------------
+SELECT DISTINCT city FROM customer
+--------------
+
+city
+Boston
+Springfield
+Kypto
+Providence
+--------------
+SELECT * FROM agent ORDER BY cityWorkingOut
+--------------
+
+firstName	lastName	cityWorkingOut	commissionPercentage	agentID
+David	Letterman	Bedrock	100	33
+Regis	Philbin	Boston	33	11
+Edward	Webb	Bristol	99	13
+Courtney	Cox	New York	25	22
+Rosie	Cox	Ottawa	50	12
+Rosie	ODonnell	Ottawa	100	66
+Hugh	Grant	Springfield	16	99
+--------------
+SELECT firstName, lastName FROM customer WHERE city = "Springfield"
+--------------
+
+firstName	lastName
+Monty	Burns
+Homer	Simpson
+Sideshow	Bob
+--------------
+SELECT customer.lastName FROM customer INNER JOIN agent ON customer.customerAgentID = agent.agentID AND agent.firstName = "Regis"
+--------------
+
+lastName
+Rubble
+Flintstone
+--------------
+SELECT description FROM product WHERE description LIKE '%pad%' OR '%Pad%'
+--------------
+
+description
+Elbow Pads
+Knee Pads
+--------------
+SELECT customer.lastName, product.description, bought.quantBought FROM customer INNER JOIN bought ON customer.customerID = bought.boughtCustomerID INNER JOIN product ON bought.boughtProductID = product.productID
+--------------
+
+lastName	description	quantBought
+Griffens	Elbow Pads	19
+Flintstone	Elbow Pads	2
+Flintstone	Knee Pads	2
+Simpson	Helmet	20
+Simpson	Socks	14
+Simpson	Elbow Pads	10
+Bob	Helmet	5
+Bob	Socks	5
+Bob	Knee Pads	5
+Bob	Elbow Pads	5
+--------------
+SELECT SUM(quantBought) AS "Homer's Total Purchases" FROM (bought INNER JOIN customer ON bought.boughtCustomerID = customer.customerID AND customer.firstName = "Homer")
+--------------
+
+Homer's Total Purchases
+44
+--------------
+SELECT customer.firstName, customer.lastName, SUM(bought.quantBought) FROM bought INNER JOIN customer WHERE bought.boughtCustomerID = customer.customerID GROUP BY customer.firstName, customer.lastName
+--------------
+
+firstName	lastName	SUM(bought.quantBought)
+Fred	Flintstone	4
+Homer	Simpson	44
+Peter	Griffens	19
+Sideshow	Bob	20
+--------------
+SELECT customer.firstName AS "Customer First Name", customer.lastName AS "Customer Last Name", agent.firstName AS "Agent First Name", agent.lastName AS "Agent Last Name" FROM customer INNER JOIN agent WHERE customer.customerAgentID = agent.agentID AND customer.city = agent.cityWorkingOut
+--------------
+
+Customer First Name	Customer Last Name	Agent First Name	Agent Last Name
+Barney	Rubble	Regis	Philbin
+Monty	Burns	Hugh	Grant
+Fred	Flintstone	Regis	Philbin
+Homer	Simpson	Hugh	Grant
+--------------
+SELECT SUM(quantBought) AS "Knee Pads Purchased" FROM bought INNER JOIN product WHERE product.description = "Knee Pads"
+--------------
+
+Knee Pads Purchased
+87
+--------------
+SELECT agent.firstName, agent.lastName FROM agent INNER JOIN customer ON agent.agentID = customer.customerAgentID INNER JOIN bought ON customer.customerID = bought.boughtCustomerID INNER JOIN product ON bought.boughtProductID = product.productID AND product.description = "Knee Pads"
+--------------
+
+firstName	lastName
+Regis	Philbin
+Rosie	ODonnell

@@ -1,0 +1,68 @@
+Warning: Using a password on the command line interface can be insecure.
+--------------
+SHOW DATABASES
+--------------
+
+Database
+information_schema
+ewebb33assign2db
+hello
+mysql
+performance_schema
+--------------
+DROP DATABASE IF EXISTS ewebb33assign2db
+--------------
+
+--------------
+CREATE DATABASE ewebb33assign2db
+--------------
+
+--------------
+GRANT USAGE ON *.* TO 'ta'@'localhost'
+--------------
+
+--------------
+DROP USER 'ta'@'localhost'
+--------------
+
+--------------
+CREATE USER 'ta'@'localhost' IDENTIFIED BY 'cs3319'
+--------------
+
+--------------
+GRANT ALL PRIVILEGES ON yourwesternuseridassign2db.* TO 'ta'@'localhost'
+--------------
+
+--------------
+FLUSH PRIVILEGES
+--------------
+
+--------------
+SHOW TABLES
+--------------
+
+--------------
+CREATE TABLE product (productID INT NOT NULL, PRIMARY KEY (productID), description VARCHAR(20), cost INT, numberAvailable INT)
+--------------
+
+--------------
+CREATE TABLE agent (firstName VARCHAR(30), lastName VARCHAR(30), cityWorkingOut VARCHAR(15), commissionPercentage INT, agentID INT NOT NULL, PRIMARY KEY (agentID))
+--------------
+
+--------------
+CREATE TABLE customer (firstName VARCHAR(30), lastName VARCHAR(30), city VARCHAR(15), phoneNumber VARCHAR(15), customerID INT NOT NULL, PRIMARY KEY (customerID), customerAgentID INT, FOREIGN KEY (customerAgentID) REFERENCES agent(agentID) ON UPDATE CASCADE)
+--------------
+
+--------------
+CREATE TABLE bought (boughtID INT NOT NULL, PRIMARY KEY(boughtID), boughtCustomerID INT NOT NULL, FOREIGN KEY (boughtCustomerID) REFERENCES customer(customerID), quantBought INT, boughtProductID INT NOT NULL, FOREIGN KEY (boughtProductID) REFERENCES product(productID))
+--------------
+
+--------------
+SHOW TABLES
+--------------
+
+Tables_in_ewebb33assign2db
+agent
+bought
+customer
+product
